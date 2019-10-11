@@ -1,3 +1,3 @@
 # Technical Details
 
-Now I'll teach you some crazy math, but I need to work it out first...
+here we can put a full code for students to check out

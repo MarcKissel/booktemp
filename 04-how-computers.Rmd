@@ -39,7 +39,7 @@ This allows you to sort the files by name and have them show up in order
 
 As you know \@ref(R_basics) {FIX}
 
-
+As you know \@ref(R-basics)
 
 
 

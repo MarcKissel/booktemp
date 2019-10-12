@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>A stats book</title>
+  <title>Chapter 4 How Computers (and R) Think | A stats book</title>
   <meta name="description" content="How to get started with Rstats">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="A stats book" />
+  <meta property="og:title" content="Chapter 4 How Computers (and R) Think | A stats book" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="A stats book" />
+  <meta name="twitter:title" content="Chapter 4 How Computers (and R) Think | A stats book" />
   
   <meta name="twitter:description" content="How to get started with Rstats" />
   
@@ -25,7 +25,7 @@
 <meta name="author" content="Marc Kissel and Kaitie Schuping">
 
 
-<meta name="date" content="2019-10-11">
+<meta name="date" content="2019-10-12">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -49,6 +50,69 @@
 
 
 
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -68,10 +132,21 @@
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="now-what.html"><a href="now-what.html"><i class="fa fa-check"></i><b>2</b> Now What</a></li>
+<li class="chapter" data-level="2" data-path="now-what.html"><a href="now-what.html"><i class="fa fa-check"></i><b>2</b> Now What</a><ul>
+<li class="chapter" data-level="2.1" data-path="now-what.html"><a href="now-what.html#r-basicsr_basics"><i class="fa fa-check"></i><b>2.1</b> R basics(#R_basics)</a></li>
+</ul></li>
 <li class="chapter" data-level="3" data-path="technical-details.html"><a href="technical-details.html"><i class="fa fa-check"></i><b>3</b> Technical Details</a></li>
 <li class="chapter" data-level="4" data-path="how-computers-and-r-think.html"><a href="how-computers-and-r-think.html"><i class="fa fa-check"></i><b>4</b> How Computers (and R) Think</a><ul>
-<li class="chapter" data-level="4.1" data-path="how-computers-and-r-think.html"><a href="how-computers-and-r-think.html#types-of-files-you-might-see-in-the-wild-and-what-they-are"><i class="fa fa-check"></i><b>4.1</b> types of files you might see in the wild and what they are</a></li>
+<li class="chapter" data-level="4.1" data-path="how-computers-and-r-think.html"><a href="how-computers-and-r-think.html#filefolder-management"><i class="fa fa-check"></i><b>4.1</b> file/folder management</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="how-computers-and-r-think.html"><a href="how-computers-and-r-think.html#file-names"><i class="fa fa-check"></i><b>4.1.1</b> file names</a></li>
+<li class="chapter" data-level="4.1.2" data-path="how-computers-and-r-think.html"><a href="how-computers-and-r-think.html#dates"><i class="fa fa-check"></i><b>4.1.2</b> dates</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="how-computers-and-r-think.html"><a href="how-computers-and-r-think.html#file-types"><i class="fa fa-check"></i><b>4.2</b> file types</a></li>
+<li class="chapter" data-level="4.3" data-path="how-computers-and-r-think.html"><a href="how-computers-and-r-think.html#types-of-files-you-might-see-in-the-wild-and-what-they-are"><i class="fa fa-check"></i><b>4.3</b> types of files you might see in the wild and what they are</a></li>
+<li class="chapter" data-level="4.4" data-path="how-computers-and-r-think.html"><a href="how-computers-and-r-think.html#accessing-internet-resources"><i class="fa fa-check"></i><b>4.4</b> Accessing internet resources</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="how-computers-and-r-think.html"><a href="how-computers-and-r-think.html#what-is-an-api"><i class="fa fa-check"></i><b>4.4.1</b> what is an api</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="how-computers-and-r-think.html"><a href="how-computers-and-r-think.html#refs-for-this-section"><i class="fa fa-check"></i><b>4.5</b> refs for this section</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -96,15 +171,124 @@
 <div id="how-computers-and-r-think" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> How Computers (and R) Think</h1>
 <p><em>What is going on behind the scenes</em></p>
-<p>This chapter has a lot of background info on using computers. a lot of it is basically random tips and tricks and info that we’ve picked up over the years. mostly as non-computer science folks coming across terms and ideas that are basic in the comp-sci world but not in the athropology world. this is a repository of things that you might one day care about. As always a work in progress so let us know if something is missing/wrong/needs to be updated etc.</p>
-<p>#file/folder management
-<a href="https://www.tidyverse.org/articles/2017/12/workflow-vs-script/" class="uri">https://www.tidyverse.org/articles/2017/12/workflow-vs-script/</a></p>
-<p>#file types</p>
-<p>A cool trick is to teach your computer to open various types of files with the program you want it to use. For example, if you write in Word it probably opens this automaticlaly. but if you then get a .txt file how will it open.</p>
+<p>This chapter has a lot of background info on using computers. A lot of this is basically random tips and tricks and info that we’ve picked up over the years, Mostly as non-computer science folks coming across terms and ideas that are basic in the comp-sci world but not in the anthropology world. In other words, this is a repository of things that you might one day care about. As always a work in progress so let us know if something is missing/wrong/needs to be updated etc.</p>
+<div id="filefolder-management" class="section level2">
+<h2><span class="header-section-number">4.1</span> file/folder management</h2>
+<p>One of the first things you want to start doing to work more efficiently in R (and in general) is to think about how best to manage files and folders. Once you get the hang of R it is easy to get a data set and just dump it into a temp folder to check it out. But this can get messy. This section gives tips on how to name and use file management so that your code is easy to use by co-authors (which could include yourself 2 years from now)</p>
+<div id="file-names" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> file names</h3>
+<p>In programming it is often a bad idea to have spaces in function names. It also is sometimes difficult to ‘read in’ files with spaces in their names.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Because of this many times we don’t want spaces in file names. There are a few ways to combine words, however, to make it easy to read</p>
+<table>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Snake case</td>
+<td>my_new_data</td>
+</tr>
+<tr class="even">
+<td>Camel case</td>
+<td>myNewData</td>
+</tr>
+<tr class="odd">
+<td>Kebab case</td>
+<td>my-new-data</td>
+</tr>
+<tr class="even">
+<td>Pascal case</td>
+<td>MyNewData</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Study question: What are the differences between these four types? Which do you like the best? Choose one and stick with that!</p>
+</blockquote>
+<p>It isn’t always easy, but keeping consistent file naming helps in the long run. It also helps to know a bit about how computers organize files. If you want a series of files to be able to be sorted in order a good trick is to label them like this:</p>
+<ul>
+<li>01_first</li>
+<li>02_second</li>
+<li>03_third</li>
+<li>04_fourth</li>
+</ul>
+<p>This allows you to sort the files by name and have them show up in order</p>
+<blockquote>
+<p>Thinking question: What are some examples of <em>bad</em> file names? in other words, what would be an example of a file name that wouldn’t help the you understand what is in it</p>
+</blockquote>
+<p>As you know @ref(R_basics) {FIX}</p>
+</div>
+<div id="dates" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> dates</h3>
+<p>Dealing with dates is not easy</p>
+<p><img src="images/iso_8601.png" /></p>
+<pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;images/iso_8601.png&quot;</span>)</code></pre>
+<p><img src="images/iso_8601.png" width="196" /></p>
+<p>The ISO 8601 standard is YYYY-MM-DD.</p>
+<p>Computers deal with dates in different ways depending upon the operating system. However, in general they rely on <strong>system time</strong>, which is the amount of time (in seconds or nanoseconds) that have elapsed since a certain day. If you find yourself working with date data it is useful to learn more about this. In chpt XXX we talk a bit about this in terms of how Excel can cause problems with date time fields</p>
+</div>
+</div>
+<div id="file-types" class="section level2">
+<h2><span class="header-section-number">4.2</span> file types</h2>
+<p>A computer file is, in esscene, a string of 1s and 0s. Computers can tell what a file is (is it an image, a text, a video) by the <strong>extention</strong>, which is the name after the period in a full file name. For example, for the file <em>nyc_temp_data.txt</em>, the “.txt” tells the computer the file is a text file. MAYBE HAVE IMAGE HERE</p>
+</div>
 <div id="types-of-files-you-might-see-in-the-wild-and-what-they-are" class="section level2">
-<h2><span class="header-section-number">4.1</span> types of files you might see in the wild and what they are</h2>
-<p>JSON - JavaScript Object Notation</p>
-<p>#what is an api</p>
+<h2><span class="header-section-number">4.3</span> types of files you might see in the wild and what they are</h2>
+<ul>
+<li>JSON - JavaScript Object Notation
+<ul>
+<li>This is common way to store info on webpages</li>
+<li>it looks like this, with a key and a value: {“name”: “Mary”, “Major”: “Anthropology”}</li>
+<li>To read JSON files into R you can use the <strong>jsonlite</strong> package and the <em>fromJSON</em> function.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></li>
+</ul></li>
+<li>EXE - executable file
+<ul>
+<li>a file that can be run by clicking on it</li>
+</ul></li>
+<li>CSV - Comma-separated values
+<ul>
+<li>This is one of the most common ways to send and receive data. A CSV file is a simple text file that uses commas to deliminate, or separate, values. Such files store numbers and text only. It is useful since anyone can open them and doesn’t require proprietary software.</li>
+</ul></li>
+<li>sql - Structured Query Language
+<ul>
+<li>Used for buidling databases</li>
+<li>where you might see it: exported data from Filemaker?</li>
+</ul></li>
+<li><p>html</p></li>
+<li><p>zip</p></li>
+<li>tar - Tape ARchive
+<ul>
+<li></li>
+</ul></li>
+<li>tar.gz - Tape ARchive compressed with gzip, a Unix function
+<ul>
+<li>compressed file that o ften has multiple files stored in a single file</li>
+</ul></li>
+<li>iso -
+<ul>
+<li>contains image that was from an optical disc like a DVD. a copy of everything on that disk</li>
+<li>You may want to <em>mount</em> the ISO file, which means it gets treated as if you are opening the real disc. you can also burn the ISO file onto an actual DVD</li>
+<li>Where you might see it: Large files, installing operating systems</li>
+</ul></li>
+<li>md - Markdown
+<ul>
+<li>A file written in any one of several types of <em>Markdown language</em>, which allows someone to write a file in a text document but then convert to another format like HTML or PDF.</li>
+<li>Where you might see it: GitHub,</li>
+</ul></li>
+<li>rmd - R Markdown
+<ul>
+<li>Markdown file that easily runs R code.</li>
+<li>Fun fact: this book was written in R Markdown</li>
+<li>Where you might see it: The chpts of this book</li>
+</ul></li>
+</ul>
+</div>
+<div id="accessing-internet-resources" class="section level2">
+<h2><span class="header-section-number">4.4</span> Accessing internet resources</h2>
+<div id="what-is-an-api" class="section level3">
+<h3><span class="header-section-number">4.4.1</span> what is an api</h3>
 <p>An API is a “application programming interface.” For most of what we will use, we can think of it as a a code that lets us access information. we can send a request for the info we want</p>
 <p>hints for api:
 load ‘usethis’
@@ -112,16 +296,35 @@ run edit_r_environ()
 add api there
 see: <a href="https://usethis.r-lib.org/articles/articles/usethis-setup.html" class="uri">https://usethis.r-lib.org/articles/articles/usethis-setup.html</a></p>
 <p>#accessing/using the terminal</p>
-<p>#computer langauges you might come across
+<p>#computer languages you might come across
 Python</p>
 <p>#terms
 GUI
 IDE</p>
 <p>#useful programs
-Wox - for pc. lets you open files easy and search a bit</p>
+Wox - for PC. lets you open files easy and search a bit</p>
 <p>#video and images</p>
+</div>
+</div>
+<div id="refs-for-this-section" class="section level2">
+<h2><span class="header-section-number">4.5</span> refs for this section</h2>
+<p>( Refs: <a href="https://www.tidyverse.org/articles/2017/12/workflow-vs-script/" class="uri">https://www.tidyverse.org/articles/2017/12/workflow-vs-script/</a></p>
 
 </div>
+</div>
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>This is because a space often means something special in computer languages.<a href="how-computers-and-r-think.html#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>for more info: <a href="https://stackoverflow.com/questions/16947643/getting-imported-json-data-into-a-data-frame" class="uri">https://stackoverflow.com/questions/16947643/getting-imported-json-data-into-a-data-frame</a><a href="how-computers-and-r-think.html#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
 </div>
             </section>
 
@@ -149,7 +352,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -159,6 +362,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
+"link": null,
+"text": null
+},
+"history": {
 "link": null,
 "text": null
 },

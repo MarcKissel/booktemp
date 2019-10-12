@@ -1,7 +1,7 @@
 --- 
 title: "A stats book"
 author: "Marc Kissel and Kaitie Schuping"
-date: "2019-10-11"
+date: "2019-10-12"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]

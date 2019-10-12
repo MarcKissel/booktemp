@@ -2,24 +2,126 @@
 
 *What is going on behind the scenes*
 
-This chapter has a lot of background info on using computers. a lot of it is basically random tips and tricks and info that we've picked up over the years. mostly as non-computer science folks coming across terms and ideas that are basic in the comp-sci world but not in the athropology world. this is a repository of things that you might one day care about. As always a work in progress so let us know if something is missing/wrong/needs to be updated etc.
+This chapter has a lot of background info on using computers. A lot of this is basically random tips and tricks and info that we've picked up over the years, Mostly as non-computer science folks coming across terms and ideas that are basic in the comp-sci world but not in the anthropology world. In other words, this is a repository of things that you might one day care about. As always a work in progress so let us know if something is missing/wrong/needs to be updated etc.
 
 
-#file/folder management
-https://www.tidyverse.org/articles/2017/12/workflow-vs-script/
+## file/folder management
+
+One of the first things you want to start doing to work more efficiently in R (and in general) is to think about how best to manage files and folders. Once you get the hang of R it is easy to get a data set and just dump it into a temp folder to check it out. But this can get messy. This section gives tips on how to name and use file management so that your code is easy to use by co-authors (which could include yourself 2 years from now)
+
+### file names
+
+In programming it is often a bad idea to have spaces in function names. It also is sometimes difficult to 'read in' files with spaces in their names ^[This is because a space often means something special in computer languages.]. Because of this many times we don't want spaces in file names. There are a few ways to combine words, however, to make it easy to read
+
+Name       | example
+---------- | -----------
+Snake case | my_new_data
+Camel case | myNewData
+Kebab case | my-new-data
+Pascal case| MyNewData
 
 
-#file types
 
-A cool trick is to teach your computer to open various types of files  with the program you want it to use. For example, if you write in Word it probably opens this automaticlaly. but if you then get a .txt file how will it open. 
+> Study question: What are the differences between these four types? Which do you like the best? Choose one and stick with that!
+
+It isn't always easy, but keeping consistent file naming helps in the long run. It also helps to know a bit about how computers organize files. If you want a series of files to be able to be sorted in order a good trick is to label them like this:
+
+* 01_first
+* 02_second
+* 03_third
+* 04_fourth
+
+This allows you to sort the files by name and have them show up in order
+
+
+> Thinking question: What are some examples of *bad* file names? in other words, what would be an example of a file name that wouldn't help the you understand what is in it
+
+
+As you know \@ref(R_basics) {FIX}
+
+
+
+
+
+### dates
+
+Dealing with dates is not easy
+
+![](images/iso_8601.png)
+
+
+```r
+knitr::include_graphics("images/iso_8601.png")
+```
+
+<img src="images/iso_8601.png" width="196" />
+
+The ISO 8601 standard is YYYY-MM-DD.
+
+Computers deal with dates in different ways depending upon the operating system. However, in general they rely on **system time**, which is the amount of time (in seconds or nanoseconds) that have elapsed since a certain day. If you find yourself working with date data it is useful to learn more about this. In chpt XXX we talk a bit about this in terms of how Excel can cause problems with date time fields
+
+
+
+
+
+
+
+## file types
+
+A computer file is, in esscene, a string of 1s and 0s. Computers can tell what a file is (is it an image, a text, a video) by the **extention**, which is the name after the period in a full file name. For example, for the file *nyc_temp_data.txt*, the ".txt" tells the computer the file is a text file.  MAYBE HAVE IMAGE HERE
+
+
 
 
 ## types of files you might see in the wild and what they are
 
-JSON - JavaScript Object Notation 
+* JSON - JavaScript Object Notation 
+  + This is common way to store info on webpages
+  + it looks like this, with a key and a value: {"name": "Mary", "Major": "Anthropology"}
+  + To read JSON files into R you can use the **jsonlite** package and the *fromJSON* function. ^[for more info: https://stackoverflow.com/questions/16947643/getting-imported-json-data-into-a-data-frame] 
 
 
-#what is an api
+* EXE - executable file
+  + a file that can be run by clicking on it
+
+* CSV - Comma-separated values
+  + This is one of the most common ways to send and receive data. A CSV file is a simple text file that uses commas to deliminate, or separate, values. Such files store numbers and text only. It is useful since anyone can open them and doesn't require proprietary software.
+  
+  
+* sql -  Structured Query Language
+  + Used for buidling databases
+  + where you might see it: exported data from Filemaker?
+
+* html
+
+* zip
+
+* tar - Tape ARchive
+  + 
+  
+
+* tar.gz - Tape ARchive compressed with gzip, a Unix function 
+  + compressed file that o ften has multiple files stored in a single file
+
+* iso - 
+  + contains image that was from an optical disc like a DVD. a copy of everything on that disk
+  + You may want to *mount* the ISO file, which means  it gets treated as if you are opening the real disc. you can also burn the ISO file onto an actual DVD
+  + Where you might see it:  Large files, installing operating systems
+  
+* md - Markdown
+  + A file written in any one of several types of *Markdown language*, which allows someone to write a file in a text document but then convert to another format like HTML or PDF. 
+  + Where you might see it: GitHub,
+  
+  
+* rmd - R Markdown
+  + Markdown file that easily runs R code.
+  + Fun fact: this book was written in R Markdown
+  + Where you might see it: The chpts of this book
+
+## Accessing internet resources
+
+
+### what is an api
 
 An API is a "application programming interface." For most of what we will use, we can think of it as a a code that lets us access information. we can send a request for the info we want 
 
@@ -32,7 +134,7 @@ see: https://usethis.r-lib.org/articles/articles/usethis-setup.html
 
 #accessing/using the terminal
 
-#computer langauges you might come across
+#computer languages you might come across
 Python
 
 #terms 
@@ -40,6 +142,11 @@ GUI
 IDE
 
 #useful programs
-Wox  - for pc. lets you open files easy and search a bit
+Wox  - for PC. lets you open files easy and search a bit
 
 #video and images
+
+
+## refs for this section
+
+( Refs: https://www.tidyverse.org/articles/2017/12/workflow-vs-script/

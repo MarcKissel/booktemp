@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Introduction | A stats book</title>
-  <meta name="description" content="How to get started with Rstats">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="How to get started with Rstats" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 Introduction | A stats book" />
   <meta property="og:type" content="book" />
@@ -22,18 +21,18 @@
   <meta name="twitter:description" content="How to get started with Rstats" />
   
 
-<meta name="author" content="Marc Kissel and Kaitie Schuping">
+<meta name="author" content="Marc Kissel and Kaitie Schuping" />
 
 
-<meta name="date" content="2019-10-12">
+<meta name="date" content="2019-10-13" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="now-what.html">
+<link rel="prev" href="index.html"/>
+<link rel="next" href="now-what.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -41,6 +40,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -48,29 +48,46 @@
 
 
 
+
+
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.8.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.39.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.39.2/plotly-latest.min.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.1/leaflet.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -79,9 +96,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -127,19 +144,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Bookdown Book</a></li>
+<li><a href="./">A stats book</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#ok-how-do-i-get-r"><i class="fa fa-check"></i><b>1.1</b> Ok, how do i get R?</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#install-r-and-r-studio"><i class="fa fa-check"></i><b>1.1.1</b> install R and R Studio</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#r-studio"><i class="fa fa-check"></i><b>1.2</b> R Studio</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#lets-look-around"><i class="fa fa-check"></i><b>1.2.1</b> lets look around…</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#r-projects"><i class="fa fa-check"></i><b>1.3</b> R projects</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#short-overview-of-how-r-works"><i class="fa fa-check"></i><b>1.4</b> Short overview of how R works</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="introduction.html"><a href="introduction.html#incomplete-code"><i class="fa fa-check"></i><b>1.4.1</b> Incomplete Code</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#lets-practice"><i class="fa fa-check"></i><b>1.5</b> lets practice</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="now-what.html"><a href="now-what.html"><i class="fa fa-check"></i><b>2</b> Now What</a><ul>
 <li class="chapter" data-level="2.1" data-path="now-what.html"><a href="now-what.html#R-basics"><i class="fa fa-check"></i><b>2.1</b> R-basics</a></li>
+<li class="chapter" data-level="2.2" data-path="now-what.html"><a href="now-what.html#some-examples"><i class="fa fa-check"></i><b>2.2</b> some examples</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="now-what.html"><a href="now-what.html#ok-but-what-can-we-do-with-this"><i class="fa fa-check"></i><b>2.2.1</b> Ok, but what can we do with this?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="now-what.html"><a href="now-what.html#a-motion-plot"><i class="fa fa-check"></i><b>2.2.2</b> A motion plot</a></li>
+<li class="chapter" data-level="2.2.3" data-path="now-what.html"><a href="now-what.html#you-can-do-fun-things-in-presentaions"><i class="fa fa-check"></i><b>2.2.3</b> You can do fun things in presentaions:</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="technical-details.html"><a href="technical-details.html"><i class="fa fa-check"></i><b>3</b> Technical Details</a></li>
+<li class="chapter" data-level="2.3" data-path="now-what.html"><a href="now-what.html#things-to-keep-in-mind"><i class="fa fa-check"></i><b>2.3</b> Things to keep in mind:</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="technical-details.html"><a href="technical-details.html"><i class="fa fa-check"></i><b>3</b> Technical Details</a><ul>
+<li class="chapter" data-level="3.1" data-path="technical-details.html"><a href="technical-details.html#notes-while-working-on-book"><i class="fa fa-check"></i><b>3.1</b> notes while working on book</a></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="how-computers-and-r-think.html"><a href="how-computers-and-r-think.html"><i class="fa fa-check"></i><b>4</b> How Computers (and R) Think</a><ul>
 <li class="chapter" data-level="4.1" data-path="how-computers-and-r-think.html"><a href="how-computers-and-r-think.html#filefolder-management"><i class="fa fa-check"></i><b>4.1</b> file/folder management</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="how-computers-and-r-think.html"><a href="how-computers-and-r-think.html#file-names"><i class="fa fa-check"></i><b>4.1.1</b> file names</a></li>
-<li class="chapter" data-level="4.1.2" data-path="how-computers-and-r-think.html"><a href="how-computers-and-r-think.html#dates"><i class="fa fa-check"></i><b>4.1.2</b> dates</a></li>
+<li class="chapter" data-level="4.1.2" data-path="how-computers-and-r-think.html"><a href="how-computers-and-r-think.html#dates-04"><i class="fa fa-check"></i><b>4.1.2</b> dates</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="how-computers-and-r-think.html"><a href="how-computers-and-r-think.html#file-types"><i class="fa fa-check"></i><b>4.2</b> file types</a></li>
 <li class="chapter" data-level="4.3" data-path="how-computers-and-r-think.html"><a href="how-computers-and-r-think.html#types-of-files-you-might-see-in-the-wild-and-what-they-are"><i class="fa fa-check"></i><b>4.3</b> types of files you might see in the wild and what they are</a></li>
@@ -147,6 +184,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4.1" data-path="how-computers-and-r-think.html"><a href="how-computers-and-r-think.html#what-is-an-api"><i class="fa fa-check"></i><b>4.4.1</b> what is an api</a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="how-computers-and-r-think.html"><a href="how-computers-and-r-think.html#refs-for-this-section"><i class="fa fa-check"></i><b>4.5</b> refs for this section</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="working-with-spreadsheets.html"><a href="working-with-spreadsheets.html"><i class="fa fa-check"></i><b>5</b> Working with Spreadsheets</a><ul>
+<li class="chapter" data-level="5.1" data-path="working-with-spreadsheets.html"><a href="working-with-spreadsheets.html#how-to-best-use-spreadsheets"><i class="fa fa-check"></i><b>5.1</b> How to best use spreadsheets:</a></li>
+<li class="chapter" data-level="5.2" data-path="working-with-spreadsheets.html"><a href="working-with-spreadsheets.html#types-of-data-used-in-spreadsheets"><i class="fa fa-check"></i><b>5.2</b> Types of data used in spreadsheets:</a></li>
+<li class="chapter" data-level="5.3" data-path="working-with-spreadsheets.html"><a href="working-with-spreadsheets.html#problems"><i class="fa fa-check"></i><b>5.3</b> problems</a></li>
+<li class="chapter" data-level="5.4" data-path="working-with-spreadsheets.html"><a href="working-with-spreadsheets.html#spreadsheet-programs"><i class="fa fa-check"></i><b>5.4</b> Spreadsheet programs</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="working-with-data.html"><a href="working-with-data.html"><i class="fa fa-check"></i><b>6</b> Working with data</a><ul>
+<li class="chapter" data-level="6.1" data-path="working-with-data.html"><a href="working-with-data.html#tidy-data"><i class="fa fa-check"></i><b>6.1</b> Tidy data</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -188,7 +234,356 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>There is a lot of available information on how to use R but filtering through online search results can be a challenge. Almost all of your questions can be answered by a google search and there are many online forums where R experts discuss the problems that they have had with R.</p>
 <p>If posed with a problem, try not to think big as it is likely that there is a singular small problem causing your issue.</p>
 <p>As we learned R we found ourselves struggling a lot. Don’t think that you are alone.</p>
+<div id="ok-how-do-i-get-r" class="section level2">
+<h2><span class="header-section-number">1.1</span> Ok, how do i get R?</h2>
+<div id="install-r-and-r-studio" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> install R and R Studio</h3>
+<ul>
+<li><a href="https://cloud.r-project.org" class="uri">https://cloud.r-project.org</a>, (this shld make most of the install automatic)</li>
+</ul>
+<p>note: I have multiple verions of R on computer. sometimes useful for packages that don’t work w/ certain versions</p>
+<p>install R studio here: <a href="http://www.rstudio.com/download" class="uri">http://www.rstudio.com/download</a>.
+- get the free version</p>
+</div>
+</div>
+<div id="r-studio" class="section level2">
+<h2><span class="header-section-number">1.2</span> R Studio</h2>
+<p>R studio is an integrated development environment (IDE) for R that makes it easier to work with R.</p>
+<p>It also does a lot of other things, likes let you <a href="https://marckissel.netlify.com">build websites</a>, create documents, and makes slides all with embeded stats and visualizations</p>
+<p>There are different panels.
++ the source - this is where we we write most of our code. R Studio allows for all sorts of tips and tricks here. That is one of the reasons we use this and not R itself
++ The console - this is where the R code is run. all lines in the console start with a ‘&gt;’. You can send stuff from the source to the console in a few ways. this is what R looks like without R studo</p>
+<p>lets look at what we can do in the panel
+- hit up to do histor
+- text then ctrl up
+- tab completion</p>
+<ul>
+<li>the history - shows what has been run</li>
+<li>the Enviornment</li>
+<li>plots</li>
+<li>and many others that become useful over time…</li>
+</ul>
+<blockquote>
+<p>Examine each of these and think about what they do?</p>
+</blockquote>
+<div id="lets-look-around" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> lets look around…</h3>
+<ol style="list-style-type: decimal">
+<li>it should open and see panels</li>
+<li>if you go to profile -&gt; Global options can see all kinds of stuff</li>
+</ol>
+<ul>
+<li>take a look at what is there</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>general layout of the program….what each pane is and how it works</li>
+<li>where is R looking for stuff?</li>
+</ol>
+</div>
+</div>
+<div id="r-projects" class="section level2">
+<h2><span class="header-section-number">1.3</span> R projects</h2>
+<p>Probably the best thing you can do is learn to think in terms of <strong>projects</strong>. When we make a project we create a self-contained unit</p>
+<p><strong>This helps us with a key feature - reproducibility</strong></p>
+<p>If you have ever used Excel you may have made a chart. But can you remake that chart? not always easy. In R since everything is written down it is super easy to update/fix/edit things on the fly. This is a happy thing, especially if you want to ever publish something</p>
+</div>
+<div id="short-overview-of-how-r-works" class="section level2">
+<h2><span class="header-section-number">1.4</span> Short overview of how R works</h2>
+<p>One way that i think about R that helps me to work it is to remember that everything in R is an “object.” What this means is that in R we make objects (or we assign values to objects) and then do things to these objects.
+for example check out the code below</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="introduction.html#cb1-1"></a>a &lt;-<span class="st"> </span><span class="dv">4</span></span></code></pre></div>
+<p>what this says is that we are going to create the object ‘a’ and then assign the value ‘4’ to it. if you run the code in R Studio you will see that the ‘environment’ panel now lists ‘a’ and gives its value.</p>
+<div id="incomplete-code" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> Incomplete Code</h3>
+<p>If you mess up (e.g. leave off a parenthesis), R might show a <code>+</code> sign prompting you to finish the command:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="introduction.html#cb2-1"></a><span class="op">&gt;</span><span class="st"> </span>(<span class="dv">11</span><span class="op">+</span><span class="dv">17-8</span></span>
+<span id="cb2-2"><a href="introduction.html#cb2-2"></a><span class="op">+</span></span></code></pre></div>
+<p>Finish the command or hit <code>Esc</code> to get out of this.</p>
+<blockquote>
+<p>look at these fucntions and think about what they will do before running them..
+LIST HERE</p>
+</blockquote>
+<ol start="2" style="list-style-type: decimal">
+<li>some data analysis (<a href="http://datacarpentry.org/semester-biology/assignments/r-intro/" class="uri">http://datacarpentry.org/semester-biology/assignments/r-intro/</a>)
+use the bird banding example maybe but turn it into an archy example</li>
+</ol>
+<p>take a dataset and import it into R. then do something to it. use my example above as a start</p>
+</div>
+</div>
+<div id="lets-practice" class="section level2">
+<h2><span class="header-section-number">1.5</span> lets practice</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="introduction.html#cb3-1"></a><span class="co">#library(ggnet)</span></span></code></pre></div>
+<ol style="list-style-type: decimal">
+<li>start R and open the project folder</li>
+<li>open a new R script and title it LASTNAME_FIRSTNAME_HW1</li>
+<li>follow along with the info below. when it is time to do the excersie simply type in the Source and then run the command. This way you have a easy way to keep track of what you did</li>
+</ol>
+<p>to keep track of where you are, use # to make a comment like this</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="introduction.html#cb4-1"></a><span class="co"># question 1</span></span>
+<span id="cb4-2"><a href="introduction.html#cb4-2"></a><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>make sure to save your file often</li>
+<li>when you reach the end, save the file again!</li>
+</ol>
+<p>note: some of this comes from datacamp and other sources</p>
+<div id="running-code" class="section level4">
+<h4><span class="header-section-number">1.5.0.1</span> Running Code</h4>
+<p>The first thing we want to do is to learn how to run something in R. take a look at the code below:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="introduction.html#cb6-1"></a><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span></span></code></pre></div>
+<pre><code>## [1] 13</code></pre>
+<p>the part in grey is the code that is entered into R. If you copy that over to your R console and hit enter you should see the answer</p>
+<blockquote>
+<ol style="list-style-type: lower-alpha">
+<li>how can you send a command from the Source pane to the Console Pane?</li>
+</ol>
+</blockquote>
+</div>
+<div id="basic-math" class="section level4">
+<h4><span class="header-section-number">1.5.0.2</span> Basic math</h4>
+<p>Now lets learn how to do basic math. Using whatever sources you can think of, figure out how to add, subtract, divide, multiply, take an exponent (i.e. square a number), get the square root. In other words, lets learn how to take an expensive computer and turn it into a $10 calculator</p>
+<blockquote>
+<p>solve the following using R</p>
+</blockquote>
+<blockquote>
+<ol style="list-style-type: lower-alpha">
+<li>3-4</li>
+<li>7 divided by 10</li>
+<li>6 times 89</li>
+<li>8 rasied to the 7th power</li>
+<li>the square root of 52</li>
+</ol>
+</blockquote>
+</div>
+<div id="assigning-variables" class="section level4">
+<h4><span class="header-section-number">1.5.0.3</span> Assigning variables:</h4>
+<p>One of the key things you will do is assign a value to an object.</p>
+<p>To do this we use this symbol &lt;-.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="introduction.html#cb8-1"></a>x &lt;-<span class="st"> </span><span class="dv">42</span></span></code></pre></div>
+<p>Read the above like: “assign the value of 42 to the object x.” or “x gets the value 42.”</p>
+<blockquote>
+<ol style="list-style-type: lower-alpha">
+<li>How would you create a variable y and assign it the value 334</li>
+<li>How you you add the x and y together to get the sum of the to numbers?</li>
+<li>How would you create a new varibale (x) that stores the result of x +y</li>
+<li>Now, change the value of x to be 500 and see what happens when you add x + y together? if you ask for the value of x now what do you get? why?</li>
+<li>What are the rules for what the name of an object in R can be?</li>
+</ol>
+</blockquote>
+</div>
+<div id="types-of-data" class="section level4">
+<h4><span class="header-section-number">1.5.0.4</span> Types of data</h4>
+<p>Whe you assign a value to a variable, it is given a specific <em>class</em>. the class is VERY important and is probably the #1 reason for having troubles with R. it is always good to check the class of an object. to do this, we can use a specific <em>function</em> in R called class</p>
+<p>class types: (note: maybe make a table?)
+1. intergers - ‘natural numbers’: 5, 6, 987
+2. numerics - decimal numbers: 4.5, 8.76666
+3. characters - text (sometimes called strings): “hello”, “goodbye”
+4. logical - boolean: True or False
+5. factors - categorical data. This is different from characters because factors are given numbers (or <em>levels</em>) that are assocated with that factor and then used for analysis…..we will come back to this later</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="introduction.html#cb9-1"></a>x &lt;-<span class="st"> </span><span class="dv">42</span></span>
+<span id="cb9-2"><a href="introduction.html#cb9-2"></a><span class="kw">class</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<p>Note that the class of X here is numeric rather than an interger (which might not be want you expected). why? well, it has to do with some inside stuff on computer languages but in general R is going to store everything as numeric unless you tell it differently. In order to make it be an interger we need to use a trick, which is to add the suffix L to the number</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="introduction.html#cb11-1"></a>xx &lt;-<span class="st"> </span>42L</span>
+<span id="cb11-2"><a href="introduction.html#cb11-2"></a><span class="kw">is.integer</span>(xx)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<blockquote>
+<ol style="list-style-type: lower-alpha">
+<li>assign my_value to be “hello”. then check its class</li>
+<li>you can also ask R directly if something is a specific type.</li>
+</ol>
+</blockquote>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="introduction.html#cb13-1"></a>my_value &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">+</span><span class="st"> </span><span class="dv">3</span></span>
+<span id="cb13-2"><a href="introduction.html#cb13-2"></a><span class="kw">is.numeric</span>(my_value)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="introduction.html#cb15-1"></a>my_name &lt;-<span class="st"> &quot;Marc Kissel&quot;</span></span>
+<span id="cb15-2"><a href="introduction.html#cb15-2"></a><span class="kw">is.numeric</span>(my_name)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="introduction.html#cb17-1"></a><span class="kw">is.character</span>(my_name) <span class="co">#and how!</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<blockquote>
+<ol style="list-style-type: lower-alpha">
+<li>below is some R code. guess what each type of object will be and then use R to find the answer</li>
+</ol>
+</blockquote>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="introduction.html#cb19-1"></a>a &lt;-<span class="st"> </span><span class="fl">1.333</span></span>
+<span id="cb19-2"><a href="introduction.html#cb19-2"></a>b &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
+<span id="cb19-3"><a href="introduction.html#cb19-3"></a>c &lt;-<span class="st">  &quot;my name is&quot;</span></span>
+<span id="cb19-4"><a href="introduction.html#cb19-4"></a>d &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>() <span class="co"># tricky</span></span></code></pre></div>
+<p><strong>remember: A class defines what kinds of operations can be implemented on an object &amp; how a function will return a value.</strong></p>
+<p>It is important to keep track of the classes of your objects. Class mistakes are probably the most common kind of problem in R</p>
+</div>
+<div id="whats-your-vector-victor" class="section level4">
+<h4><span class="header-section-number">1.5.0.5</span> What’s your vector, Victor?</h4>
+<p>so far we have only stored one value into an object. but most of the time we are going to have to work with a lot of data. say you have a series of numbers and want to add 7 to each of them. it would be a pain to have to do that manually. we can use r to store a series of vaules (called a <em>vector</em>)</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="introduction.html#cb20-1"></a>my_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb20-2"><a href="introduction.html#cb20-2"></a>my_new_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>)</span></code></pre></div>
+<p>let’s say you are doing some research and want to record the biological sex of the skeltons in your study. after analyzing them you decide that this is the correct designation</p>
+<p>male
+male
+female
+male
+female
+female
+female</p>
+<blockquote>
+<ol style="list-style-type: lower-alpha">
+<li>make a new object called <strong>my_study</strong> and make it a vector of the recorded biological sex</li>
+<li>print the object to R</li>
+</ol>
+</blockquote>
+<p>congrats! you now have a <em>vector</em>!</p>
+<p>lets say you want to figure out how what the sex of the 5th skeleton is. you could print the object and count, but that takes time and an get difficult. R makes things easier for people like me who are lazy and what the computer to do it all.</p>
+<p>to get an <em>element</em> from a list we use square brackets</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="introduction.html#cb21-1"></a>my_study[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>##    two 
+## &quot;male&quot;</code></pre>
+<blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>how would you get the sex of the third skeleton?</li>
+<li>can you figure out how, in one line of code, to get the sex of the 1st and 4th skeleton?</li>
+</ol>
+</blockquote>
+<p>Ok, but it is kinda confusing what these stand for. you know that they are skeletons 1-7, but maybe someone else doesn’t. We can assign names to objects using a special function called <em>names</em></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="introduction.html#cb23-1"></a><span class="kw">names</span>(my_study) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;one&quot;</span>, <span class="st">&quot;two&quot;</span>, <span class="st">&quot;three&quot;</span>, <span class="st">&quot;four&quot;</span>, <span class="st">&quot;five&quot;</span>, <span class="st">&quot;six&quot;</span>, <span class="st">&quot;seven&quot;</span>)</span></code></pre></div>
+<blockquote>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>print my_study now and see how it differs.</li>
+</ol>
+</blockquote>
+<p>Note: now that they have names we can also get the values that way</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="introduction.html#cb24-1"></a>my_study[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>##    two 
+## &quot;male&quot;</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="introduction.html#cb26-1"></a>my_study[<span class="st">&quot;two&quot;</span>]</span></code></pre></div>
+<pre><code>##    two 
+## &quot;male&quot;</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="introduction.html#cb28-1"></a><span class="co">#these are the same</span></span>
+<span id="cb28-2"><a href="introduction.html#cb28-2"></a></span>
+<span id="cb28-3"><a href="introduction.html#cb28-3"></a>my_study[<span class="dv">2</span>] <span class="op">==</span><span class="st"> </span>my_study[<span class="st">&quot;two&quot;</span>] <span class="co"># the &#39;==&#39; asks R to tell you if the value on the left and the value on the right are the same....</span></span></code></pre></div>
+<pre><code>##  two 
+## TRUE</code></pre>
+<p>to be fair, most of the time there are easier ways to name things, but having a basic understanding of how R works helps a lot</p>
+</div>
+<div id="matrices" class="section level4">
+<h4><span class="header-section-number">1.5.0.6</span> Matrices</h4>
+<p>A vector is simply a list of numbers
+A matrix is a <strong>rectangular</strong> array of numbers</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="introduction.html#cb30-1"></a>cx1980 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">13</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">5</span>, <span class="dv">35</span>, <span class="dv">9</span>)</span>
+<span id="cb30-2"><a href="introduction.html#cb30-2"></a>cx1988 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">15</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">38</span>, <span class="dv">0</span>)</span>
+<span id="cb30-3"><a href="introduction.html#cb30-3"></a>chimp &lt;-<span class="st"> </span><span class="kw">cbind</span>(cx1980, cx1988) <span class="co"># cbind binds the vectors together a columns</span></span>
+<span id="cb30-4"><a href="introduction.html#cb30-4"></a><span class="kw">class</span>(chimp)</span></code></pre></div>
+<pre><code>## [1] &quot;matrix&quot;</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="introduction.html#cb32-1"></a>chimp</span></code></pre></div>
+<pre><code>##      cx1980 cx1988
+## [1,]      7      9
+## [2,]     13     11
+## [3,]      8     15
+## [4,]     13      8
+## [5,]      5      9
+## [6,]     35     38
+## [7,]      9      0</code></pre>
+<p>One thing you want to learn is how to read a matrix and identify elements. Lets say you want to get a vector of just the ages from 1980. we can use the square brackets again but need to know a trick.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="introduction.html#cb34-1"></a>chimp[<span class="dv">1</span>,] <span class="co">#note the comma</span></span></code></pre></div>
+<pre><code>## cx1980 cx1988 
+##      7      9</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="introduction.html#cb36-1"></a>chimp[,<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1]  7 13  8 13  5 35  9</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="introduction.html#cb38-1"></a><span class="co">#putting the number before the comma gets us the row. putting it after the comma gets column. </span></span>
+<span id="cb38-2"><a href="introduction.html#cb38-2"></a><span class="co">#one way to remeber that Rows come first is the menominc Railway Cars</span></span>
+<span id="cb38-3"><a href="introduction.html#cb38-3"></a>chimp[<span class="dv">3</span>,<span class="dv">2</span>] <span class="co"># third row, second column</span></span></code></pre></div>
+<pre><code>## cx1988 
+##     15</code></pre>
+<blockquote>
+<ol style="list-style-type: lower-alpha">
+<li>how would you make a matrix by row rather than column (use google if need be)</li>
+<li>There are others ways to make a matirx
+look at the code below and figure out how it works</li>
+</ol>
+</blockquote>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="introduction.html#cb40-1"></a>freq &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">32</span>,<span class="dv">11</span>,<span class="dv">10</span>,<span class="dv">3</span>,  <span class="dv">38</span>,<span class="dv">50</span>,<span class="dv">25</span>,<span class="dv">15</span>,  <span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">7</span>,<span class="dv">7</span>,  <span class="dv">3</span>,<span class="dv">30</span>,<span class="dv">5</span>,<span class="dv">8</span>)</span>
+<span id="cb40-2"><a href="introduction.html#cb40-2"></a>hair &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Black&quot;</span>, <span class="st">&quot;Brown&quot;</span>, <span class="st">&quot;Red&quot;</span>, <span class="st">&quot;Blond&quot;</span>)</span>
+<span id="cb40-3"><a href="introduction.html#cb40-3"></a>eyes &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Brown&quot;</span>, <span class="st">&quot;Blue&quot;</span>, <span class="st">&quot;Hazel&quot;</span>, <span class="st">&quot;Green&quot;</span>)</span>
+<span id="cb40-4"><a href="introduction.html#cb40-4"></a>freqmat &lt;-<span class="st"> </span><span class="kw">matrix</span>(freq, <span class="dt">nr=</span><span class="dv">4</span>, <span class="dt">nc=</span><span class="dv">4</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)</span>
+<span id="cb40-5"><a href="introduction.html#cb40-5"></a><span class="kw">dimnames</span>(freqmat)[[<span class="dv">1</span>]] &lt;-<span class="st"> </span>hair</span>
+<span id="cb40-6"><a href="introduction.html#cb40-6"></a><span class="kw">dimnames</span>(freqmat)[[<span class="dv">2</span>]] &lt;-<span class="st"> </span>eyes</span>
+<span id="cb40-7"><a href="introduction.html#cb40-7"></a>freqmat</span></code></pre></div>
+<pre><code>##       Brown Blue Hazel Green
+## Black    32   11    10     3
+## Brown    38   50    25    15
+## Red      10   10     7     7
+## Blond     3   30     5     8</code></pre>
+<blockquote>
+<p>Now, create your own matrix with madeup data…</p>
+</blockquote>
+</div>
+<div id="dataframes" class="section level4">
+<h4><span class="header-section-number">1.5.0.7</span> Dataframes</h4>
+<p>A dataframe stores data! it can hold different kinds of varibales/classes so it is different from a matrix. You cna think of it as a list of varibales that are all the same length. Data frames are probably the most common way we will work with R</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="introduction.html#cb42-1"></a>bone &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;humerus&quot;</span>, <span class="st">&quot;radius&quot;</span>, <span class="st">&quot;ulna&quot;</span>, <span class="st">&quot;femur&quot;</span>, <span class="st">&quot;tibia&quot;</span>, <span class="st">&quot;fibula&quot;</span>)</span>
+<span id="cb42-2"><a href="introduction.html#cb42-2"></a>size_inches &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">14.4</span>, <span class="fl">10.4</span>, <span class="fl">11.1</span>, <span class="fl">19.9</span>, <span class="fl">16.9</span>, <span class="fl">15.9</span>)</span>
+<span id="cb42-3"><a href="introduction.html#cb42-3"></a>injury &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;no&quot;</span>),<span class="dv">6</span>,<span class="dt">replace=</span><span class="ot">TRUE</span>)</span>
+<span id="cb42-4"><a href="introduction.html#cb42-4"></a>sample_letter &lt;-<span class="st"> </span>LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>]</span>
+<span id="cb42-5"><a href="introduction.html#cb42-5"></a>my_sample &lt;-<span class="st"> </span><span class="kw">data.frame</span>(bone, size_inches, injury, sample_letter)</span>
+<span id="cb42-6"><a href="introduction.html#cb42-6"></a>my_sample</span></code></pre></div>
+<pre><code>##      bone size_inches injury sample_letter
+## 1 humerus        14.4    yes             A
+## 2  radius        10.4    yes             B
+## 3    ulna        11.1    yes             C
+## 4   femur        19.9     no             D
+## 5   tibia        16.9    yes             E
+## 6  fibula        15.9     no             F</code></pre>
+<p>If you use the function <em>View</em> you can see a spreadsheet of the data frame you just made</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="introduction.html#cb44-1"></a><span class="kw">View</span>(my_sample)</span></code></pre></div>
+<p>you can view a specifc column/vector using the $</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="introduction.html#cb45-1"></a>my_sample<span class="op">$</span>bone</span></code></pre></div>
+<pre><code>## [1] humerus radius  ulna    femur   tibia   fibula 
+## Levels: femur fibula humerus radius tibia ulna</code></pre>
+<blockquote>
+<p>a.run the code below. it should show an error. Why? rewrite the code so it works!</p>
+</blockquote>
+<p>NOTE: make this appear but not run?</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="introduction.html#cb47-1"></a><span class="co">#num &lt;- c(1,2,3,4,5)</span></span>
+<span id="cb47-2"><a href="introduction.html#cb47-2"></a><span class="co">#food &lt;- c(&quot;bread&quot;, &quot;butter&quot;, &quot;milk&quot;, &quot;cheese&quot;,&quot;coffee&quot;, &quot;tea&quot;)</span></span>
+<span id="cb47-3"><a href="introduction.html#cb47-3"></a><span class="co">#quantity &lt;-  c(1,1,3,5,7,1)</span></span>
+<span id="cb47-4"><a href="introduction.html#cb47-4"></a><span class="co">#shopping &lt;- data.frame(num, food, quantity)</span></span></code></pre></div>
+<blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>what is the class type of the different vectors in the my_sample dataframe?</li>
+</ol>
+</blockquote>
+</div>
+<div id="comparing-values" class="section level4">
+<h4><span class="header-section-number">1.5.0.8</span> Comparing values</h4>
+<p>Often times we are going to want to compare things.</p>
+<blockquote>
+<ol style="list-style-type: lower-alpha">
+<li>run the code below</li>
+</ol>
+</blockquote>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="introduction.html#cb48-1"></a>a &lt;-<span class="st"> </span><span class="dv">5</span></span>
+<span id="cb48-2"><a href="introduction.html#cb48-2"></a>b &lt;-<span class="st"> </span><span class="dv">9</span></span>
+<span id="cb48-3"><a href="introduction.html#cb48-3"></a>c &lt;-<span class="st"> </span><span class="dv">7</span></span>
+<span id="cb48-4"><a href="introduction.html#cb48-4"></a>d &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">49</span>)</span></code></pre></div>
+<blockquote>
+<p>Now, figure out how to have R evaluate the following:
+- is a bigger than b?
+- is c equal to d (careful with this one..)
+- is c less than or equal to b?</p>
+</blockquote>
+<blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>make a new vector called <em>temp</em> with the values of 1,5,7,9,11,14,6,8. then write a single line of code that evalautes if 3 is greater than each of the values in the vector</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>how would you ask R if the 5th value in <em>temp</em> is larger than 5?</li>
+</ol>
+</blockquote>
 
+</div>
+</div>
 </div>
             </section>
 
@@ -201,11 +596,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({

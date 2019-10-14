@@ -2,5 +2,143 @@
 
 So, I Downloaded R, Now What
 
+unit questions
+
+1. What kinds of data exist within R? 
+2. What is a command line?
+3. How do you write one? 
+
 
 ## R-basics {#R-basics}
+
+
+
+
+ 
+There are six basic data types within R: character, numeric (real or decimal), integer, logical or complex. Within these data types are data structures: atomic vectors, lists, matrices, data frames, and factors. R operates on data structures. 
+ 
+https://natureofcode.com/book/chapter-1-vectors/
+ 
+Functions to examine features of vectors and other objects: 
+
+Class( ) – what kind of object is it? 
+Typeof(  ) – what is the object’s data type? 
+Length( ) – how long is the object or vector? 2 dimensional objects? 
+Attributes ( ) – Does the object have any metadata?
+ 
+ 
+Assignment: 
+Read https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf chapters 1 & 2
+ 
+
+
+## some examples
+
+### Ok, but what can we do with this?
+
+```{r show a datatable}
+knitr::kable(head(iris), format = "html")
+```
+
+
+#### you can make snazzy visulazations 
+
+Need to check where this came from
+
+```{r show interactive plot, message=FALSE, warning=FALSE, include=FALSE}
+library(plotly)
+
+data <- read.csv("https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv")
+
+data_2007 <- data[which(data$year == 2007),]
+data_2007 <- data_2007[order(data_2007$continent, data_2007$country),]
+slope <- 2.666051223553066e-05
+data_2007$size <- sqrt(data_2007$pop * slope)
+colors <- c('#4AC6B7', '#1972A4', '#965F8A', '#FF7070', '#C61951')
+
+p <- plot_ly(data_2007, x = ~gdpPercap, y = ~lifeExp, color = ~continent, size = ~size, colors = colors,
+        type = 'scatter', mode = 'markers', sizes = c(min(data_2007$size), max(data_2007$size)),
+        marker = list(symbol = 'circle', sizemode = 'diameter',
+                      line = list(width = 2, color = '#FFFFFF')),
+        text = ~paste('Country:', country, '<br>Life Expectancy:', lifeExp, '<br>GDP:', gdpPercap,
+                      '<br>Pop.:', pop)) %>%
+  layout(title = 'Life Expectancy v. Per Capita GDP, 2007',
+         xaxis = list(title = 'GDP per capita (2000 dollars)',
+                      gridcolor = 'rgb(255, 255, 255)',
+                      range = c(2.003297660701705, 5.191505530708712),
+                      type = 'log',
+                      zerolinewidth = 1,
+                      ticklen = 5,
+                      gridwidth = 2),
+         yaxis = list(title = 'Life Expectancy (years)',
+                      gridcolor = 'rgb(255, 255, 255)',
+                      range = c(36.12621671352166, 91.72921793264332),
+                      zerolinewidth = 1,
+                      ticklen = 5,
+                      gridwith = 2),
+         paper_bgcolor = 'rgb(243, 243, 243)',
+         plot_bgcolor = 'rgb(243, 243, 243)')
+
+
+```
+
+```{r echo=FALSE, fig.width=9, message=FALSE, warning=FALSE}
+ggplotly(p)
+```
+
+ 
+### A motion plot
+
+```{r show motion plot, echo=FALSE, fig.width=9, message=FALSE, warning=FALSE}
+library(plotly)
+library(gapminder)
+
+p <- gapminder %>%
+  plot_ly(
+    x = ~gdpPercap, 
+    y = ~lifeExp, 
+    size = ~pop, 
+    color = ~continent, 
+    frame = ~year, 
+    text = ~country, 
+    hoverinfo = "text",
+    type = 'scatter',
+    mode = 'markers'
+  ) %>%
+  layout(
+    xaxis = list(
+      type = "log"
+    )
+  )
+
+ggplotly(p)
+```
+
+
+
+### You can do fun things in presentaions:
+
+
+```{r map, echo=FALSE}
+library(leaflet)
+leaflet() %>% addTiles() %>% setView(-81.680244, 36.214232, zoom =17)
+
+```
+
+
+
+## Things to keep in mind:
+You are going to get frustrated. Learning anything takes time and patience. And often times it isn't your fault, but the fault of the program for not making it easy to use! I have been using R for 5+ years and still feel like a novice sometimes.
+
+
+![Saw](https://media1.giphy.com/media/EDFMhoeSZU6FG/giphy.gif?fbclid=IwAR2UKk4nruFa4fg6aI3I45Ya6JVSfHWdvqUwtKiUns7-XU1nhxz6Z2xLe5I)
+
+
+
+---
+
+background-image: url(https://mitpress.mit.edu/sites/default/files/styles/large_book_cover/http/mitp-content-server.mit.edu%3A18180/books/covers/cover/%3Fcollid%3Dbooks_covers_0%26isbn%3D9780262640374%26type%3D.jpg?itok=GHYRoS0y)
+
+
+
+---

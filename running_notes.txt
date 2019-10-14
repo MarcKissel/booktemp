@@ -1,0 +1,5 @@
+to help with upload to git
+https://rachaellappan.github.io/bookdown/
+
+this has more if above doesnt work
+https://community.rstudio.com/t/hosting-bookdown-in-github/20427/6

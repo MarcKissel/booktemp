@@ -1,7 +1,7 @@
 --- 
 title: "A stats book"
 author: "Marc Kissel and Kaitie Schuping"
-date: "2019-10-13"
+date: "2019-10-14"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]
@@ -10,6 +10,7 @@ link-citations: yes
 github-repo: 
 url: ''
 description: "How to get started with Rstats"
+
 ---
 
 # Preface {-}

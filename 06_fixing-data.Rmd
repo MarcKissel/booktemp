@@ -18,6 +18,12 @@ As we talked about in the previous chapter, most data live in spreadsheets.
 Data transformation is the key to R. we are going to take data in from a worksheet/csv/whatever and transform it.
 
 There are a number of ways to do this. One  method that gives us many options is using a package called *dplyr.* This is part of a larger group of packages known as the *Tidyverse.*
-we are also going to use a packaged called nycflights13
+
+
+## examples
+
+- use data from the primate database
+- a few from Tidytuesday so they are introduced to that
+- another anthro dataset
 
 

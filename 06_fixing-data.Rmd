@@ -1,5 +1,6 @@
 # Working with data
 
+NEEDS A LOT OF EDITS
 
 How do we manipulate the data to tell a story
 
@@ -22,8 +23,309 @@ There are a number of ways to do this. One  method that gives us many options is
 
 ## examples
 
+- data i used from NSF 
 - use data from the primate database
 - a few from Tidytuesday so they are introduced to that
 - another anthro dataset
 
+
+## getting data into R
+
+While it has gotten easier over the years to do this, one of the major struggles first-time R users (and seasoned professionals) have is getting data from a file into R. In this section we give a few different methods of doing this. 
+
+examples:
+read.csv and read_csv
+using the 'import dataset' button
+read_xl
+datapasta
+etc..
+
+
+
+
+### reading in a CSV file
+
+if you are lucky the data sent to you is in a CSV file  (see chpt 5 \@ref(Working with Spreadsheets)) for tips on what to do if this is not the case).
+
+There are XXX ways to do this
+
+#### read.csv vs read_csv vs fread (from data.table)
+
+
+
+These are very similar functions. The read.csv is part of base R whil read_csv is from the Tidyverse. Most of the differences between the two functions aren't really useful for us (see XXXX for details) but there are two things to mention. One is that unlike read.csv, read_csv doesn't automatically imports strings as factors. This might be useful since the assumption that strings should be factors has a bit of history attached to it ![](https://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/). Moreover, read_csv seems to do a better job of 'guessing' the type of data in each column. It parses  the cols and puts them in the data type that it guesses they should be in
+
+
+read_csv also tells you what it parsed each col as.
+
+fread has the nice output that it tells you had big the file is
+
+read_csv will import the data as a tibble vs as a dataframe so keep that in mind. It is also faster than read.csv, while fread seems to be the fastest overall 
+
+As with anything, people disagree about this. honestly you caa get bogged down in this or just pick one and learn that one. and if you need a different method know it exists.
+
+also, keep in mind that there are other types of data you can read in with these. 
+
+examples:
+
+
+```{r}
+library(tidyverse)
+library(data.table)
+
+body_mass_base <- read.csv("https://zenodo.org/record/2600338/files/BodyMass.csv")
+
+body_mass_tidy <- read_csv("https://zenodo.org/record/2600338/files/BodyMass.csv")
+
+body_mass_datatable <- fread("https://zenodo.org/record/2600338/files/BodyMass.csv")
+```
+
+
+> look at each of the objects imported above. compare them with str function. What differences do you see? 
+
+If you are using Rstudio there is another way to do this. if you look at the enviotnment pane you will see an 'import dataset' button (next to the little broom). clicking that gives you a point-and-click interface that will generate the function calls to read in various datasets
+
+> using the button play around with the various options in readr and see what you can find out. HOw can you change the way readr parses a speicfic col? 
+
+
+### reading in a Excel file
+
+How to import/ a dataset from Excel into R:
+I. Open Excel data 
+a.  File/ Save As/ Name/ *Before clicking save, make sure to change the file format to Comma Delimited Text and better set the directory to My Documents folder, for Windows
+b. When Saved, this file will have a name Data.csv. 
+II   Now Open R and run 
+a.     MyRData <- read.csv(“Data.csv”, header = TRUE) 
+                                               i.     The argument header= TRUE tells R that the first row of the data labels of every column 
+1.   If set to FALSE then the first row of the data are not labels but are considered as data points
+b.    If data is saved in Text (.txt) format, use the read.table function
+                                               i.     Run 
+  MyRData2 <- read.table(“Data1.text”, header = TRUE) 
+
+read_xl
+
+
+
+
+
+### Datapasta
+
+
+
+### cleaning the data once it is in R
+
+sometimes the col heads are messy. the wonderful janitor package comes in useful here
+
+
+```{r}
+home_range <- read_csv("https://zenodo.org/record/2600338/files/HomeRange.csv")
+home_range_clean <- janitor::clean_names(home_range)
+```
+
+> How does home_range differ from home_range_clean? look at the online help for the Janitor package and figure out what other functions it has? how would you find duplicate rows of data? 
+
+
+
+
+
+## You got the data into R, now what?
+
+Once you get data into R the question becomes what to do with it. 
+EDA 
+when doing EDA we need to be careful. as you 'explore' data you are also affecting your view of it. for example as we look at the dataset we may play around and start to see patterns. these patterns might be there because we choose to look for patterns and not becuse they are real..good practice is to take a 'training set' of your data and explore that.
+Or use a dataset that you aren't studying to learn
+
+## lets look at the primate dataset
+
+This comes from XXXXXX
+
+### viewing the data
+
+```{r}
+home_range <- read_csv("https://zenodo.org/record/2600338/files/HomeRange.csv")
+
+```
+
+we can explore the data that is in R with different functions.
+
+just enter the name of the object spits out some info
+
+```{r}
+home_range
+print(home_range)
+```
+
+notes a couple of things about the output in the console.
+
+1. it might not all fit on the screen
+2. if you scroll to the top you see that it is a 'tibble' that is 748 x 15. This means there are 748 rows and 15 columns
+
+FIND ANOTHER DATASET
+> how many observatiosn are ther
+> How many variables? 
+ 
+If you want to see just the first few rows use head
+
+```{r}
+head(home_range)
+tail(home_range)
+```
+
+You can also use the built-in dataviwer with the View function. this makes a spreadsheet that you can quickly explore
+
+```{r}
+View(home_range)
+```
+
+finally, if the data is a tibble you can use glimpse
+
+```{r}
+glimpse(home_range)
+```
+
+>what differences exist betwen print and glimpse
+
+
+### exploring the data
+
+Much of this usse the dplyr package which is part of the tidyverse. We also show how to use the data.tables pacakge as well.
+
+As its authors point out, a good way to think of dplyr is in terms of verbs. the verbs do things to the object
+
+#### count
+
+this function provides a count by varibale 
+
+```{r}
+count(home_range, Family)
+
+```
+
+> look at the help for count and figure out how to make it order the output from large to small
+
+
+add_count adds a new col at the end of the dataframe with these data
+
+```{r}
+ add_count(home_range, Family, name = "family_count") 
+```
+
+Count is a great way to start exploring your dataset. 
+
+
+
+One nice way to make complex code easier to read is to chain arguments togehter w/ the "%>%" symobl. This comes from the AAAAAA pacakage and also is loaded when you load the tidyverse. the %>%  can be read as "then"
+
+so the same code to get the counts of Famlies can be done like this
+
+```{r}
+home_range %>% count(Family, sort = T)
+```
+
+This is sometimes easier when you have a long code and want to make it readable
+
+
+#### Filter
+
+
+this function searches for rows that match the arguement. For example, lets say you want all the speices in the genus Allenopithecus
+
+**note the == rather than =**
+
+```{r}
+filter(home_range, Genus == "Macaca")
+#or
+
+home_range %>% filter(Genus == "Macaca")
+```
+
+
+You can do more complex filters too:
+
+lets say you want two genra
+
+```{r}
+filter(home_range, Genus == "Macaca" | Genus == "Allochrocebus")
+```
+
+or you want to match two varibales
+
+```{r}
+filter(home_range, Genus == "Macaca" & N_groups == 2)
+```
+
+
+
+
+
+
+> how would you find HomeRange_ha greater than 75 and then save that to a new dataset. look at the dplyr help to figure this out
+
+```{r}
+over75 <- filter(home_range, HomeRange_ha > 75)
+```
+
+
+
+#### Select
+
+
+this verb searches the dataframe and only returns cols that you ask for. For example. lets say i just want the speceis and home range
+
+```{r}
+home_range %>% select(Species, HomeRange_ha)
+```
+
+This is useful when you want to look at only some things
+
+> select has a lot of arguments. HOw would you select all the cols that habe the startes with the prefix "Alt"
+
+
+
+YOu can also chain verbs together
+
+```{r}
+home_range %>% filter(Genus == "Macaca") %>% select(Species)
+```
+
+
+#### arrange
+
+this sorts the data
+
+```{r}
+home_range %>% arrange(HomeRange_ha)
+```
+
+if you put a minus sign in from of the variable it will organiz in descnein order
+
+
+```{r}
+home_range %>% arrange(-HomeRange_ha)
+#or
+home_range %>% arrange(desc(HomeRange_ha))
+```
+
+#### mutate
+
+This is a powerhouse and one that you will probably use a lot. it is simialr to some of the stuff you might do in Excel
+
+
+
+## another example
+
+```{r}
+squirrel_raw <- read_csv("datasets/2018_Central_Park_Squirrel_Census_-_Squirrel_Data (1).csv")
+squirrel <- squirrel_raw %>% janitor::clean_names()
+squirrel %>% count(date, sort=T)
+
+library(lubridate)
+squirrel %>% mutate(parsed_date = mdy(date))
+
+squirrel <- squirrel %>% mutate(date = mdy(date))
+squirrel %>% select(other_interactions) %>% filter(!is.na(other_interactions)) %>%  View()
+
+squirrel %>% count(other_interactions, sort=T)
+squirrel %>% count(other_activities, sort=T)
+```
 

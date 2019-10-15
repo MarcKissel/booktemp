@@ -32,7 +32,9 @@ Read https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf chapters 1 & 2
  
 
 
-## some examples
+
+
+## some examples MAYBE PUT THIS IN CHPT 3?
 
 ### Ok, but what can we do with this?
 

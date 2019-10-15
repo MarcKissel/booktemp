@@ -207,6 +207,19 @@ x <- 42
 Read the above like: "assign the value of 42 to the object x." or "x gets the value 42."
 
 
+
+**to store more than one element in an object we need to remember a trick**
+
+if you want to make a series of numbers, characters, whatever, you need to use a special sequence. to do this, we must combine the values we want to assign with the c function, which combines values into a vector or list
+
+
+
+```r
+my_list <- c(1,2,3,4,5)
+my_list_2 <- c("my_name", "my_address", "my_number")
+```
+
+
 >a. How would you create a variable y and assign it the value 334
 b. How you you add the x and y together to get the sum of the to numbers?
 c. How would you create a new varibale (x) that stores the result of x +y
@@ -216,7 +229,12 @@ e. What are the rules for what the name of an object in R can be?
 
 #### Types  of data
 
-Whe you assign a value to a variable, it is given a specific *class*. the class is VERY important and is probably the #1 reason for having troubles with R. it is always good to check the class of an object. to do this, we can use a specific *function* in R called class
+Whe you assign a value to a variable, it is given a specific *class*. the class is VERY important and is probably the #1 reason for having troubles with R.
+The way in which you can interact with the object is based on the class of the object. The class of the object is assigned by R based on what it thinks the object is supposed to be
+
+
+
+it is always good to check the class of an object. to do this, we can use a specific *function* in R called class
 
 class types: (note: maybe make a table?)
 1. intergers - 'natural numbers': 5, 6, 987
@@ -225,6 +243,50 @@ class types: (note: maybe make a table?)
 4. logical - boolean: True or False
 5. factors - categorical data. This is  different from characters because factors are given numbers (or *levels*) that are assocated with that factor and then used for analysis.....we will come back to this later
 
+ADD LINK TO FACTOR SECTION 
+
+
+
+```r
+a <- 4
+b <- "my name"
+c <- FALSE
+d <- c(1,2,3.0,4)
+```
+
+
+
+```r
+class(a)
+```
+
+```
+## [1] "numeric"
+```
+
+```r
+class(b)
+```
+
+```
+## [1] "character"
+```
+
+```r
+class(c)
+```
+
+```
+## [1] "logical"
+```
+
+```r
+class(d)
+```
+
+```
+## [1] "numeric"
+```
 
 
 
@@ -502,11 +564,11 @@ my_sample
 
 ```
 ##      bone size_inches injury sample_letter
-## 1 humerus        14.4     no             A
-## 2  radius        10.4    yes             B
+## 1 humerus        14.4    yes             A
+## 2  radius        10.4     no             B
 ## 3    ulna        11.1    yes             C
-## 4   femur        19.9     no             D
-## 5   tibia        16.9     no             E
+## 4   femur        19.9    yes             D
+## 5   tibia        16.9    yes             E
 ## 6  fibula        15.9     no             F
 ```
 

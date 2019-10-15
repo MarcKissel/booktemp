@@ -3,3 +3,6 @@ https://rachaellappan.github.io/bookdown/
 
 this has more if above doesnt work
 https://community.rstudio.com/t/hosting-bookdown-in-github/20427/6
+
+
+- we should have something on teminilaory of varibales, observations, etc

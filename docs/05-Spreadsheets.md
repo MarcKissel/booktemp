@@ -1,5 +1,8 @@
 # Working with Spreadsheets
 
+to add: 
+- section on cleaning spreadsheets (or shld that go in chpt 6)
+
 
 Spreadsheets are interactive computer applications for organization, analysis, and storage of data in tabular form. They consist of a table of cells arranged into rows and columns. A cell is simply a  box that holds data. Most spreadsheets use a standard convention where columns are are represented by letters, "A", "B", "C" and rows are normally represented by numbers, 1, 2, 3,.
 

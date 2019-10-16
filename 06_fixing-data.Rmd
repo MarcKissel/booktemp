@@ -323,9 +323,34 @@ library(lubridate)
 squirrel %>% mutate(parsed_date = mdy(date))
 
 squirrel <- squirrel %>% mutate(date = mdy(date))
+squirrel  <- squirrel %>% mutate(month = month(date, label = T))
+squirrel <- squirrel %>% mutate(day = wday(date, label=T))
+
+
 squirrel %>% select(other_interactions) %>% filter(!is.na(other_interactions)) %>%  View()
 
 squirrel %>% count(other_interactions, sort=T)
 squirrel %>% count(other_activities, sort=T)
+
+squirrel %>% group_by(day) %>%  add_count() %>%  ggplot(aes(day,n )) + geom_line(group=1)
+
+
+```
+
+
+
+```{r}
+squirrel %>% count(primary_fur_color)
+squirrel %>% count(combination_of_primary_and_highlight_color, sort=T)
+
+squirrel %>% ggplot(aes(x,y)) + geom_point()  + labs(title = "squirrel data for 3,023 sightings in Central Park", caption = "from: https://data.cityofnewyork.us/Environment/2018-Central-Park-Squirrel-Census-Squirrel-Data/vfnx-vebw")
+
+squirrel %>% ggplot(aes(x,y, color = primary_fur_color)) + geom_point()
+
+squirrel %>% ggplot(aes(x,y, color = primary_fur_color)) 
+
+library(leaflet)
+
+squirrel %>% leaflet() %>%  addTiles() %>% addMarkers(lat = ~x, lng = ~y)
 ```
 

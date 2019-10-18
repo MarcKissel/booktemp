@@ -127,7 +127,6 @@ home_range_clean <- janitor::clean_names(home_range)
 
 
 
-
 ## You got the data into R, now what?
 
 Once you get data into R the question becomes what to do with it. 
@@ -137,7 +136,33 @@ Or use a dataset that you aren't studying to learn
 
 ## lets look at the primate dataset
 
-This comes from XXXXXX
+This comes from https://www.nature.com/articles/s41597-019-0059-9
+
+
+
+```{r}
+body_mass <- read_csv("https://zenodo.org/record/3368372/files/BodyMass.csv")
+
+diel_activity <- read_csv("https://zenodo.org/record/3368372/files/DielActivity.csv")
+
+habitat <- read_csv("https://zenodo.org/record/3368372/files/Habitat.csv")
+
+
+home_range <- read_csv("https://zenodo.org/record/3368372/files/HomeRange.csv")
+
+
+IUCN_Poptrend_Realm <-read_csv("https://zenodo.org/record/3368372/files/IUCN_Poptrend_Realm.csv")
+
+Locomotion <- read_csv("https://zenodo.org/record/3368372/files/Locomotion.csv")
+
+
+TrophicGuild <- read_csv("https://zenodo.org/record/3368372/files/TrophicGuild.csv")
+```
+
+
+#dataAnim
+
+
 
 ### viewing the data
 
@@ -309,6 +334,145 @@ home_range %>% arrange(desc(HomeRange_ha))
 #### mutate
 
 This is a powerhouse and one that you will probably use a lot. it is simialr to some of the stuff you might do in Excel
+
+maybe we want our data in lbs and not grams!
+
+```{r}
+body_mass_updated <- body_mass %>% mutate(BodyMass_lbs = BodyMass_kg * 2.20462 )
+```
+
+#### summarise
+
+```{r}
+home_range %>% summarise(mean(HomeRange_ha, na.rm =T))
+home_range %>% group_by(Family) %>% summarise(mean(HomeRange_ha, na.rm =T))
+```
+
+
+#### MORE
+
+
+
+
+## adding datasets together
+
+take a look at the datasets body_mass and home range. Maybe you want to know if the body_mass predicts home range. But the data are in two different datasets?
+
+
+to do this we use what is known as a join. There are a few ways to do this but probably the easiest is the version from the Tidyverse
+
+(see https://dplyr.tidyverse.org/reference/join.html)
+
+in a join, you tell R which two datasets you want to join together and then *how* you want to join them
+- A left join: takes all the rows in first dataset ands adds to them the cols in the second dataset. if the first dataset has a row that doesn't match the second, the new cols for that row have NAs
+
+- a right join: opposite of the left join
+
+- inner join: gives all the rows of the first dataset that match the second
+
+- full join: if there are no matches in left or right dataset it keeps those rows and adds NAs to the cols
+
+- anti_join: only gives  rows from the first that don't match the second
+
+-nest join: ????
+
+
+
+example:
+
+when doing a join you often want to specify which col in the left dataset is to be matched to the one in the right. Join will attempt to guess this if you don't tell it. sometimes the guess is right but i think it best to tell it what you want. This is easy when the col names match
+
+lets join body_mass and home range
+
+
+
+```{r}
+
+a <- body_mass %>% left_join(home_range, by = ("CommonName"))
+
+
+b <-body_mass %>% left_join(home_range)
+
+
+```
+
+notice above that a we told it to just use the common name col. but when we didn't say whihc to use it used all the cols in common. "Family", "Genus", "CommonName", "Species", "Species (ITIS)". also note that a is larger than B. we cna figure out what didn't match the second time using an anti-join
+
+```{r}
+
+a %>% anti_join(b) # found in a but not in b
+
+a %>% filter()
+b %>% anti_join(a) # found in b but not in a
+```
+
+
+
+
+> why are the matches different? how might you figure this out? what is causing the problem here
+
+ANSWER: note a %>% filter(Genus.x != Genus.y) %>% select(Genus.x, Genus.y, CommonName)
+
+
+In this case maybe we will stick with the ones that are more conservativly matched and thus use the b dataset. but the point is that join helps a lot
+
+```{r}
+
+b %>% ggplot(aes(x=BodyMass_kg, y =HomeRange_ha)) + geom_point() + geom_smooth(method="lm")
+b %>% ggplot(aes(x=BodyMass_kg, y =HomeRange_ha, color = Family)) + geom_point() + scale_x_log10() + scale_y_log10()
+
+b %>% ggplot(aes(x=BodyMass_kg, y =HomeRange_ha)) + geom_point() + geom_smooth(method="lm") + scale_x_log10() + scale_y_log10()
+
+fit <- lm(HomeRange_ha ~BodyMass_kg, data= b )
+summary(fit)
+library(broom)
+tidy(fit)
+augment(fit)
+glance(fit)
+```
+
+
+ADD WHAT TO DO WHEN COL NAMES DONT MATCH
+
+Sometimes you want to join two datasets where the key columns don't have the same name. This happens often when trying to make maps (SEE CHPT XXXX). To do this we just need to tell R which cols are equal
+
+GIVE BETTER EXAMPLE HERE
+
+```{r}
+#a %>% left_join(b, by = c("a_name" = "b_name ))
+```
+
+
+{find that package that does the visualization of joining }
+
+
+A cool package to help you understand joijns is the dataAnim one
+
+```{r}
+#dataAnim
+devtools::install_github("chrk623/dataAnim")
+
+library(dataAnim)
+data(datoy1)
+join_anim(join_type = "left", speed = 1, x = datoy1$x, y = datoy1$y, by = "Name", show_msg = T)
+join_anim(join_type = "inner", speed = 1, x = datoy1$x, y = datoy1$y, by = "Name", show_msg = T)
+join_anim(join_type = "full", speed = 1, x = datoy1$x, y = datoy1$y, by = "Name", show_msg = T)
+data(datoy_wide)
+gather_anim(key = "Subject", value = "Score", col = c("English", "Maths"), data = datoy_wide)
+
+
+join_anim(join_type = "left", speed = 1, x = temp$x, y = temp$y, by = "Name", show_msg = T)
+
+
+```
+
+
+
+### Viewing your data
+
+SEE MORE IN VISULAZTION CHPT
+see examples in primate.rmd
+
 
 
 

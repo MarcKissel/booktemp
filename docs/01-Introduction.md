@@ -566,8 +566,8 @@ my_sample
 ##      bone size_inches injury sample_letter
 ## 1 humerus        14.4    yes             A
 ## 2  radius        10.4     no             B
-## 3    ulna        11.1    yes             C
-## 4   femur        19.9    yes             D
+## 3    ulna        11.1     no             C
+## 4   femur        19.9     no             D
 ## 5   tibia        16.9    yes             E
 ## 6  fibula        15.9     no             F
 ```

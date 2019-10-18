@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>basics on data viz</title>
+  <meta name="description" content="basics on data viz">
+  <meta name="generator" content="bookdown <!--bookdown:version--> and GitBook 2.6.7">
+
+  <meta property="og:title" content="basics on data viz" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="basics on data viz" />
+  
+  
+  
+
+<meta name="author" content="Marc Kissel">
+
+
+<meta name="date" content="2019-10-16">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<!--bookdown:link_prev-->
+<!--bookdown:link_next-->
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+<!--bookdown:title:start-->
+<div id="header">
+<h1 class="title">basics on data viz</h1>
+<p class="author"><em>Marc Kissel</em></p>
+<p class="date"><em>2019-10-16</em></p>
+</div>
+<!--bookdown:title:end-->
+
+<!--bookdown:toc:start-->
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+<!--bookdown:toc2:start-->
+<ul>
+<li><a href="#deviaiton"><span class="toc-section-number">0.0.1</span> Deviaiton</a></li>
+<li><a href="#bad-data"><span class="toc-section-number">1</span> bad data</a></li>
+<li><a href="#bad-perceptoion"><span class="toc-section-number">2</span> bad perceptoion</a></li>
+</ul>
+<!--bookdown:toc2:end-->
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">basics on data viz</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<!--bookdown:toc:end-->
+<!--bookdown:body:start-->
+<p>class: center</p>
+<p>#class handout</p>
+<p>.left[
+1. For each graph write a short overview of what you think it is trying to say. in other words, use prose to turn the visualzation into words</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Do you think it is a <strong>good</strong> visualization? why or why not?</p></li>
+<li><p>what, if anything, do you think would make it better
+]
+—
+# why should we visualize data?</p></li>
+</ol>
+<p>##Anscombe’s Quartet</p>
+<p>???
+anscombe
+knitr::kable(anscombe)</p>
+<p>#Here is mean of x and y
+anscombe.1 &lt;- data.frame(x = anscombe[[“x1”]], y = anscombe[[“y1”]], Set = “Anscombe Set 1”)
+anscombe.2 &lt;- data.frame(x = anscombe[[“x2”]], y = anscombe[[“y2”]], Set = “Anscombe Set 2”)
+anscombe.3 &lt;- data.frame(x = anscombe[[“x3”]], y = anscombe[[“y3”]], Set = “Anscombe Set 3”)
+anscombe.4 &lt;- data.frame(x = anscombe[[“x4”]], y = anscombe[[“y4”]], Set = “Anscombe Set 4”)</p>
+<p>anscombe.data &lt;- rbind(anscombe.1, anscombe.2, anscombe.3, anscombe.4)
+aggregate(cbind(x, y) ~ Set, anscombe.data, mean)
+#sd
+aggregate(cbind(x, y) ~ Set, anscombe.data, sd)
+#And correlation between x and y
+library(plyr)</p>
+<p>correlation &lt;- function(data) {
+x &lt;- data.frame(r = cor(data<span class="math inline">\(x, data\)</span>y))
+return(x)
+}</p>
+<p>ddply(.data = anscombe.data, .variables = “Set”, .fun = correlation)</p>
+<p>#linear regression
+model1 &lt;- lm(y ~ x, subset(anscombe.data, Set == “Anscombe Set 1”))
+model2 &lt;- lm(y ~ x, subset(anscombe.data, Set == “Anscombe Set 2”))
+model3 &lt;- lm(y ~ x, subset(anscombe.data, Set == “Anscombe Set 3”))
+model4 &lt;- lm(y ~ x, subset(anscombe.data, Set == “Anscombe Set 4”))</p>
+<p>summary(model1)
+summary(model2)
+summary(model3)
+summary(model4)</p>
+<p>#####think about how to do this easier?</p>
+<p>library(ggplot2)</p>
+<p>gg &lt;- ggplot(anscombe.data, aes(x = x, y = y))
+gg &lt;- gg + geom_point(color = “black”)
+gg &lt;- gg + facet_wrap(~Set, ncol = 2)
+gg &lt;- gg + geom_smooth(formula = y ~ x, method = “lm”, se = FALSE, data = anscombe.data)
+gg</p>
+<p>class: center</p>
+<p>#major types of plots</p>
+<p>.left[]
+—
+class: center
+###scatter plot
+####compare the relationship between 2 continuous variables</p>
+<p><img src="lecture_on_visulzations__1__files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>###jitter</p>
+<p><img src="lecture_on_visulzations__1__files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div id="deviaiton" class="section level3">
+<h3><span class="header-section-number">0.0.1</span> Deviaiton</h3>
+<p>Compare variation in values between small number of items with respect to a fixed reference.</p>
+<p><img src="lecture_on_visulzations__1__files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>#slope chart</p>
+<p><img src="lecture_on_visulzations__1__files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="lecture_on_visulzations__1__files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>#boxplot
+.pull-left[
+<img src="lecture_on_visulzations__1__files/figure-html/unnamed-chunk-12-1.png" width="672" />]</p>
+<p>.pull-right[
+The dark line inside the box represents the median. The top of box is 75th percentile and bottom of box is 25%ile. The end points of the lines (aka whiskers) is at a distance of 1.5*IQR, where IQR or Inter Quartile Range is the distance between 25th and 75th percentiles. The points outside the whiskers are marked as dots and are normally considered as extreme points.]
+—
+#nicer?</p>
+<p><img src="lecture_on_visulzations__1__files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>#bad taste</p>
+<ol style="list-style-type: decimal">
+<li>chart junk examples</li>
+</ol>
+<ul>
+<li>maximize “data-to-ink” ratio</li>
+</ul>
+</div>
+<div id="bad-data" class="section level1">
+<h1><span class="header-section-number">1</span> bad data</h1>
+<p><img src="https://socviz.co/assets/ch-01-democracy-nyt-version.png" /></p>
+<p>???
+It’s an elegant small-multiple that, in addition to the point ranges it identifies, also shows an error range (labeled as such for people who might not know what it is), and the story told across the panels for each country is pretty consistent.</p>
+<p>The figure is a little tricky to interpret. As the x-axis label says, the underlying data are from a cross-sectional survey of people of different ages rather than a longitudinal study measuring everyone at different times. Thus, the lines do not show a trend measured each decade from the 1930s, but rather differences in the answers given by people born in different decades, all of whom were asked the question at the same time. Given that, a bar graph might have been a more appropriate to display the results.</p>
+<p>e graph reads as though people were asked to say whether they thought it was essential to live in a democracy, and the results plotted show the percentage of respondents who said “Yes”, presumably in contrast to those who said “No”. But in fact the survey question asked respondents to rate the importance of living in a democracy on a ten point scale, with 1 being “Not at all Important” and 10 being “Absolutely Important”. The graph showed the difference across ages of people who had given a score of “10” only, not changes in the average score on the question. As it turns out, while there is some variation by year of birth, most people in these countries tend to rate the importance of living in a democracy very highly, even if they do not all score it as “Absolutely Important”. The political scientist Erik Voeten redrew the figure based using the average response. The results are shown in Figure 1.9.</p>
+</div>
+<div id="bad-perceptoion" class="section level1">
+<h1><span class="header-section-number">2</span> bad perceptoion</h1>
+<ul>
+<li><p>third category of badness lives in the gap between data and aesthetics.</p></li>
+<li><p>visualizations encode numbers in lines, shapes, and colors. That means that our interpretation of these encodings is partly conditional on how we perceive geometric shapes and relationships generally.</p></li>
+<li><p>i.e.: needlessly multiplying the number of dimensions shown in a plot. Using an area to represent a length, for example, can make differences between observations look larger than they are.</p></li>
+</ul>
+<hr />
+<p>maybe do this example live</p>
+<p><img src="https://socviz.co/assets/ch-01-excel-3d-column-chart-values.png" /></p>
+<p>???
+Figure 1.10: A 3-D Column Chart created in Microsoft Excel for Mac. Although it may seem hard to believe, the values shown in the bars are 1, 2, 3, and 4</p>
+<p>the 3-D columns in combination with the default angle of view for the chart make the values as displayed differ substantially from the ones actually in the cell. Each column appears to be somewhat below its actual value. It is possible to see, if you squint with your mind’s eye, how the columns would line up with the axis guidelines if your angle of view moved so that the bars head-on. But as it stands, anyone asked what values the chart shows would give the wrong answer.</p>
+<hr />
+<p><img src="https://socviz.co/dataviz-pdfl_files/figure-html4/ch-01-preception-data-1.png" /></p>
+<p>???</p>
+<p>Even when the underlying numbers are sensible, the default settings of software are good, and the presentation of charts is mostly junk-free, some charts remain more difficult to interpret than others. They encode data in ways that are hard for viewers to understand. Figure 1.11 presents a stacked bar chart with time in years on the x-axis and some value on the y-axis. The bars show the total value, with subdivisions by the relative contribution of different categories to each year’s observation. Charts like this are common when showing the absolute contribution of various products to total sales over time, for example, or the number of different groups of people in a changing population. Equivalently, stacked line-graphs showing similar kinds of trends are also common for data with many observation points on the x-axis, such as quarterly observations over a decade.</p>
+<p>In a chart like this, the overall trend is readily interpretable, and it is also possible to easily follow the over-time pattern of the category that is closest to the x-axis baseline (in this case, Type D, colored in purple). But the fortunes of the other categories are not so easily grasped. Comparisons of both the absolute and the relative share of Type B or C are much more difficult, whether one wants to compare trends within type, or between them. Relative comparisons need a stable baseline. In this case, that’s the x-axis, which is why the overall trend and the Type D trend are much easier to see than any other trend.</p>
+<hr />
+<p>Their results are shown in Figure 1.23, along with Cleveland and McGill’s original results for comparison. The replication was quite good. The overall pattern of results seems clear, with performance worsening substantially as we move away from comparison on a common scale to length-based comparisons to angles and finally areas. Area comparisons perform even worse than the (justifiably) much-maligned pie chart.</p>
+<p>These findings, and other work in this tradition, strongly suggest that there are better and worse ways of visually representing data when the task the user must perform involves estimating and comparing values within the graph. Think of this as a “decoding” operation that the viewer must perform in order to understand the content. The data values were encoded or mapped in to the graph, and now we have to get them back out again. When doing this, we do best judging the relative position of elements aligned on a common scale, as for example when we compare the heights of bars on a bar chart, or the position of dots with reference to a fixed x or y axis. When elements are not aligned but still share a scale, comparison is a little harder but still pretty good. It is more difficult again to compare the lengths of lines without a common baseline.</p>
+</div>
+<!--bookdown:body:end-->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<!--bookdown:link_prev-->
+<!--bookdown:link_next-->
+    </div>
+  </div>
+<!--bookdown:config-->
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

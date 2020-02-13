@@ -300,6 +300,31 @@ over75 <- filter(home_range, HomeRange_ha > 75)
 ```
 
 
+If you want to get a random sample of rows you can use sample_frac, sample_n, slice, or top_n
+
+> what are the diffferences between these?
+
+
+NOTE: also give example of how to filter for something that matches various things
+
+i.e. filter(term %in% c("quickly", "seek", "army", "teacher", "unexpected", "friends", "evil")) 
+
+ALSOL ention how to filter out the nas
+
+#### distinct
+
+Simialr to filter, this lets you remove rows that have duplicates
+
+
+
+```{r}
+home_range %>% distinct(Family)
+home_range %>% distinct(Family, .keep_all = T)
+```
+
+> compare the two lines of code. what does .keep_all do
+
+
 
 #### Select
 
@@ -350,7 +375,15 @@ maybe we want our data in lbs and not grams!
 body_mass_updated <- body_mass %>% mutate(BodyMass_lbs = BodyMass_kg * 2.20462 )
 ```
 
+
+transmute will create a new col and delete the old column 
+
 #### summarise
+
+This reduces multiple values down to a summary. If you want the mean for a group you will use summarise mixed with a group_by
+
+note that we use 'na.rm = T"  so that the NAs are removed
+
 
 ```{r}
 home_range %>% summarise(mean(HomeRange_ha, na.rm =T))
@@ -358,12 +391,48 @@ home_range %>% group_by(Family) %>% summarise(mean(HomeRange_ha, na.rm =T))
 ```
 
 
-#### MORE
+
+#### rename
+
+Rename is a quick way to change the name of a column.
 
 
 
+```{r}
+home_range %>% rename(common_name = CommonName)
+```
+
+
+>note: the new name goes first
+
+#### seperate
+
+talk about the 'extra' = merge arguement here and maybe a bit about text analysis. also talk about fill . see https://youtu.be/yFRSTlk3kRQ?t=1183 
+
+#### seperate_rows
+
+give examples here of how it breaks a col into multiple rows by a seperator 
+
+#### Distinct
+mentoin .keep_all = TRUE
+
+
+#### string stuff
+
+like mixing this with a mutate via str_remove etc.
+using filter and str_detect
+ALSO matching parital strings? 
+
+## extract? 
 
 ## adding datasets together
+
+
+The simplest way is i ytou have two datasets with the same vars in same order and you just want to add them togeteher
+
+
+bind_rows (adds new rows)
+bind_cols (adds new cols)
 
 take a look at the datasets body_mass and home range. Maybe you want to know if the body_mass predicts home range. But the data are in two different datasets?
 
@@ -476,6 +545,9 @@ join_anim(join_type = "left", speed = 1, x = temp$x, y = temp$y, by = "Name", sh
 ```
 
 
+Antijoin is useufl for removing stopwords. show example form tidytext etc
+
+
 
 ### Viewing your data
 
@@ -527,3 +599,21 @@ library(leaflet)
 squirrel %>% leaflet() %>%  addTiles() %>% addMarkers(lat = ~x, lng = ~y)
 ```
 
+
+
+## tidyr
+
+This is one of the more confusing aspects of Rstats and takes a bit of thiking.
+this is a package for changing the layout, or reshaping, the dataset
+
+
+Pivoting
+
+```{r}
+
+```
+
+
+
+
+## THINK ABUT SOMEHTING ON TEXT MINING

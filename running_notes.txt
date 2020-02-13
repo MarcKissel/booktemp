@@ -1,3 +1,10 @@
+#ideas 
+#for visaulization
+#https://twitter.com/TrevorABranch/status/1227494765760897024
+
+
+
+
 to help with upload to git
 https://rachaellappan.github.io/bookdown/
 
@@ -6,3 +13,7 @@ https://community.rstudio.com/t/hosting-bookdown-in-github/20427/6
 
 
 - we should have something on teminilaory of varibales, observations, etc
+
+ADD THIS:
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3701793/?fbclid=IwAR17pkNpnca5zgMDL85Qou9o-Ln_U7ZNS1M_OjRGKAq9en86cS3y7osIWL0

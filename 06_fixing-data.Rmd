@@ -2,6 +2,15 @@
 
 NEEDS A LOT OF EDITS
 
+# to add:
+use this to convert all factors in a d
+df %>% mutate_if(is.character, factor) 
+
+#for visualization chpt
+https://twitter.com/TrevorABranch/status/1227493205337182209
+
+
+
 How do we manipulate the data to tell a story
 
 

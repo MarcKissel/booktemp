@@ -1,0 +1,19 @@
+---
+title: "NOTES"
+author: "marc"
+date: "10/26/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## things to think aboout
+
+idea about talking abotu unceritny etc. and where it comes from
+- what is a p-value?
+
+## puzzles
+
+https://www.youtube.com/watch?v=gx6mhi7iHPE

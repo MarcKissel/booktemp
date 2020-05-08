@@ -5,6 +5,13 @@
 This chapter has a lot of background info on using computers. A lot of this is basically random tips and tricks and info that we've picked up over the years, Mostly as non-computer science folks coming across terms and ideas that are basic in the comp-sci world but not in the anthropology world. In other words, this is a repository of things that you might one day care about. As always a work in progress so let us know if something is missing/wrong/needs to be updated etc.
 
 
+## Computer programming 
+
+( to add - basics on dif between machine code/assemblay code/etc)
+
+
+
+
 ## file/folder management
 
 One of the first things you want to start doing to work more efficiently in R (and in general) is to think about how best to manage files and folders. Once you get the hang of R it is easy to get a data set and just dump it into a temp folder to check it out. But this can get messy. This section gives tips on how to name and use file management so that your code is easy to use by co-authors (which could include yourself 2 years from now)

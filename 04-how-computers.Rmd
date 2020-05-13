@@ -16,6 +16,16 @@ This chapter has a lot of background info on using computers. A lot of this is b
 
 One of the first things you want to start doing to work more efficiently in R (and in general) is to think about how best to manage files and folders. Once you get the hang of R it is easy to get a data set and just dump it into a temp folder to check it out. But this can get messy. This section gives tips on how to name and use file management so that your code is easy to use by co-authors (which could include yourself 2 years from now)
 
+
+### Writing files
+
+There are a number of ways in which you can write code. Most use some sort of text editors. THese are useful in that they often have autocompletion and other things that make working wiht code easier.
+
+Rstuidio
+
+Atom
+
+
 ### file names
 
 In programming it is often a bad idea to have spaces in function names. It also is sometimes difficult to 'read in' files with spaces in their names ^[This is because a space often means something special in computer languages.]. Because of this many times we don't want spaces in file names. There are a few ways to combine words, however, to make it easy to read

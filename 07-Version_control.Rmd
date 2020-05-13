@@ -1,0 +1,29 @@
+# Version control
+
+this should go earlier...
+talk about why we might want to use this
+what it is
+issue with google drive re: repo( pg 31 of freeman and ross)
+
+
+What is it
+
+different types
+
+See  Freeman and Ross for info
+
+A *Version Control System* allows you (and your team) to manage collections of programs
+
+
+XXXXX
+
+
+It is a lttle like Google Docs except that you need to be explicit abt wehen you save changes and it trackschanges line by line. This is nice cause Git, with some sort of mgic, can allow 2 people to work on the same doc on thier own computers (in diffretne spots) and then commit them to the remote
+
+types
+
+Github
+
+BitBucket
+
+GitLab
